@@ -5,8 +5,13 @@ class LinkedList
     @head = nil
   end
 
-  def append(value)
-    @head = Node.new(value)
+  def append(bet_amount)
+    node = Node.new(bet_amount)
+    if self.empty? 
+      @head = node
+    else
+      last_node(@head).next_node = node
+    end
   end
 
   def count 
@@ -19,5 +24,17 @@ class LinkedList
 
   def total_winnings
     head.bet_amount
+  end
+
+  def last_node(node)
+    if node.tail?
+      node
+    else
+      last_node(node.next_node)
+    end
+  end
+
+  def empty?
+    @head.nil?
   end
 end

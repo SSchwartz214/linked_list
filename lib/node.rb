@@ -1,10 +1,9 @@
 class Node
-  attr_reader :bet_amount
-  attr_accessor :next_node
+  attr_accessor :bet_amount, :next_node
 
   def initialize(bet_amount)
     @bet_amount = bet_amount
-    @node_next = nil
+    @next_node = nil
   end
 
   def tail?

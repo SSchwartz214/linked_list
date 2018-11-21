@@ -47,6 +47,7 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_append_two_nodes
+
     linked_list = LinkedList.new
     linked_list.append(10)
     linked_list.append(20)
@@ -54,5 +55,31 @@ class LinkedListTest < Minitest::Test
     second_node_winnings = linked_list.head.next_node.bet_amount
 
     assert_equal 20, second_node_winnings
+  end
+
+  def test_last_node_returns_the_tail
+
+    linked_list = LinkedList.new
+
+    linked_list.append(10)
+
+    last_node = linked_list.last_node(linked_list.head)
+
+    assert_instance_of Node, last_node
+    assert_equal 10, last_node.bet_amount
+  end
+
+  def test_empty_returns_true_when_head_is_nil
+    linked_list = LinkedList.new
+    
+
+    assert_equal true, linked_list.empty?
+  end
+
+  def test_empty_returns_false_when_head_is_not_nil
+    linked_list = LinkedList.new
+    linked_list.append(10)
+
+    assert_equal false, linked_list.empty?
   end
 end
