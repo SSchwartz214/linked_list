@@ -41,9 +41,9 @@ class LinkedListTest < Minitest::Test
     linked_list = LinkedList.new
     linked_list.append(10)
 
-    winnings = linked_list.total_winnings
+    sentence = "First bet was $10"
 
-    assert_equal 10, winnings
+    assert_equal sentence, linked_list.to_string
   end
 
   def test_append_two_nodes
@@ -111,5 +111,18 @@ class LinkedListTest < Minitest::Test
 
     count = linked_list.count
     assert_equal 3, count
+  end
+
+  def test_total_winnings_with_three_nodes
+    linked_list = LinkedList.new
+    linked_list.append(10)
+    linked_list.append(20)
+    linked_list.append(30)
+
+    expected = "First bet was $10, next bet was $20, next bet was $30"
+
+    result = linked_list.to_string
+
+    assert_equal expected, result
   end
 end

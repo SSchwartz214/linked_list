@@ -21,12 +21,14 @@ class LinkedList
     if empty?
       return 0
     else
-      count_node(head, 1)
+      count_node(@head, 1)
     end
   end
-
-  def total_winnings
-    head.bet_amount
+  
+  def to_string
+    return "" if empty?
+    return sentence_starter if head.tail?
+    stringify_node(head.next_node, sentence_starter)
   end
 
   def last_node(node)
@@ -57,5 +59,18 @@ class LinkedList
       else 
         count_node(node.next_node, counter += 1)
       end
+    end
+
+    def concat(bet, node)
+      "#{bet.to_s}, next bet was $#{node.bet_amount.to_s}"
+    end
+
+    def stringify_node(node, bet)
+      return concat(bet, node) if node.tail?
+      stringify_node(node.next_node, concat(bet, node))
+    end
+
+    def sentence_starter
+      "First bet was $#{head.bet_amount.to_s}"
     end
 end
