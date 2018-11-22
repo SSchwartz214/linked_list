@@ -17,11 +17,11 @@ class LinkedList
     end
   end
 
-  def count 
-    if head.nil?
-      0
+  def count
+    if empty?
+      return 0
     else
-      1
+      count_node(head, 1)
     end
   end
 
@@ -49,5 +49,13 @@ class LinkedList
 
     def set_tail(bet_amount)
       last_node(@head).next_node = new_node(bet_amount)
+    end
+
+    def count_node(node, counter)
+      if node.tail?
+        counter
+      else 
+        count_node(node.next_node, counter += 1)
+      end
     end
 end

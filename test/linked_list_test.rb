@@ -102,4 +102,14 @@ class LinkedListTest < Minitest::Test
 
     assert_equal 30, result
   end
+
+  def test_count_three_nodes
+    linked_list = LinkedList.new
+    linked_list.append(10)
+    linked_list.append(20)
+    linked_list.append(30)
+
+    count = linked_list.count
+    assert_equal 3, count
+  end
 end
