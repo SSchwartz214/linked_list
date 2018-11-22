@@ -1,5 +1,6 @@
 class Node
-  attr_accessor :bet_amount, :next_node
+  attr_reader :bet_amount
+  attr_accessor :next_node
 
   def initialize(bet_amount)
     @bet_amount = bet_amount
