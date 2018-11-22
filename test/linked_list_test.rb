@@ -82,4 +82,24 @@ class LinkedListTest < Minitest::Test
 
     assert_equal false, linked_list.empty?
   end
+
+  def test_new_node_returns_a_new_node
+    linked_list = LinkedList.new
+
+    node = linked_list.new_node(10)
+
+    assert_instance_of Node, node
+    assert_equal 10, node.bet_amount
+  end
+
+  def test_append_three_nodes
+    linked_list = LinkedList.new
+    linked_list.append(10)
+    linked_list.append(20)
+    linked_list.append(30)
+
+    result = linked_list.head.next_node.next_node.bet_amount
+
+    assert_equal 30, result
+  end
 end

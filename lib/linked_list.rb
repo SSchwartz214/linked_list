@@ -5,12 +5,15 @@ class LinkedList
     @head = nil
   end
 
+  def new_node(bet_amount)
+    Node.new(bet_amount)
+  end
+
   def append(bet_amount)
-    node = Node.new(bet_amount)
-    if self.empty? 
-      @head = node
+    if empty? 
+      set_head(bet_amount)
     else
-      last_node(@head).next_node = node
+      set_tail(bet_amount)
     end
   end
 
@@ -37,4 +40,14 @@ class LinkedList
   def empty?
     @head.nil?
   end
+
+  private
+
+    def set_head(bet_amount)
+      @head = new_node(bet_amount)
+    end
+
+    def set_tail(bet_amount)
+      last_node(@head).next_node = new_node(bet_amount)
+    end
 end
